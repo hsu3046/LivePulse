@@ -7,12 +7,16 @@ and presentation displays.
 
 ```text
 Browser clients
-  ├─ HTTP API ─────── FastAPI ─────── Supabase PostgreSQL
-  └─ WebSocket ────── in-process ConnectionManager
+  ├─ HTTP API ─────── Vercel FastAPI (hnd1) ─────── Supabase PostgreSQL
+  └─ WebSocket ────── Vercel FastAPI ────────────── in-process ConnectionManager
 ```
 
 Supabase PostgreSQL is the production source of truth. SQLite remains available only
 as a local fallback and as the isolated database used by automated tests.
+
+Vercel packages the application as one Python Function. `pyproject.toml` explicitly
+selects `app.main:app`, limits setuptools discovery to the `app` package, and includes
+the browser files under `app/static`.
 
 ## Persistence selection
 

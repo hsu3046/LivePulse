@@ -2,6 +2,8 @@
 
 오프라인 행사에서 참가자가 QR코드로 접속해 실시간 질문에 답변하고, 진행자가 결과를 발표 화면에 시각화하는 실행 가능한 MVP입니다.
 
+프로덕션: [https://livepulse-tau.vercel.app](https://livepulse-tau.vercel.app)
+
 ## 구현된 기능
 
 - 행사 생성 및 행사별 고유 코드·QR코드
@@ -81,6 +83,18 @@ Supabase 프로젝트 상단의 **Connect** 메뉴에서 두 연결 문자열을
 마이그레이션은 `supabase/migrations/`에 있습니다. LivePulse 업무 테이블은 모두
 대소문자를 보존한 `"LivePulse_"` 접두어를 사용하며 RLS가 기본 활성화됩니다.
 비밀 연결 문자열은 `.env.local`에만 저장하고 Git에 커밋하지 않습니다.
+
+## Vercel 배포
+
+- 프로젝트: `team-aib/livepulse`
+- Framework Preset: `FastAPI`
+- 진입점: `app.main:app`
+- 함수 리전: 도쿄 `hnd1` — Supabase의 `ap-northeast-1`과 동일 리전
+- 런타임 비밀값: `DATABASE_URL`만 Production에 등록
+
+`DIRECT_URL`은 마이그레이션·관리 전용이므로 Vercel 런타임에 등록하지 않습니다.
+프로덕션 QR은 요청받은 배포 주소를 자동 사용하므로 `PUBLIC_BASE_URL`이 없어도
+정상 동작합니다.
 
 ## 테스트
 

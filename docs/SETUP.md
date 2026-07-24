@@ -45,6 +45,21 @@ The automated suite uses a temporary SQLite database. A separate Supabase smoke 
 should create a uniquely named event, exercise the full flow, and delete the event in a
 `finally` cleanup block.
 
+## Vercel production
+
+The production project is `team-aib/livepulse` and the stable URL is
+<https://livepulse-tau.vercel.app>.
+
+- Keep the Vercel Framework Preset set to `FastAPI`.
+- `pyproject.toml` declares `app.main:app` as the entrypoint.
+- Set only `DATABASE_URL` for the Production runtime. Do not expose `DIRECT_URL`.
+- Keep the function region at `hnd1`, next to the Supabase `ap-northeast-1` database.
+- Git deployments build the current GitHub default branch.
+
+If a deployment reports `Ready` but every path returns Vercel `NOT_FOUND`, inspect the
+build list. A build containing only `.` and no lambda means the project was treated as
+static content, usually because its Framework Preset is `Other`.
+
 ## Retention
 
 Automatic retention cleanup is not enabled yet. Records remain in Supabase until they

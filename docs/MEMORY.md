@@ -16,12 +16,14 @@
 - Existing SQLite data was copied without deleting the source.
 - The full event lifecycle, CSV export, WebSocket snapshot, server startup, host page,
   API response, and QR generation were verified against Supabase.
+- Vercel production was deployed to `https://livepulse-tau.vercel.app` in `hnd1`.
+  Production host HTML, Supabase reads, QR PNG generation, and a WebSocket host
+  snapshot all passed.
 - The automated suite passed all 15 tests.
 
 ## Deferred
 
 - Supabase Realtime for multi-instance broadcasting
-- Vercel deployment configuration
 - Automatic deletion of ended events after the planned 30-day retention window
 - Upstash only if load testing later justifies shared presence, rate limiting,
   counters, or Pub/Sub
