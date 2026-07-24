@@ -1,0 +1,4 @@
+fastapi==0.128.2
+uvicorn[standard]==0.48.0
+qrcode[pil]==8.2
+psycopg[binary]==3.3.4

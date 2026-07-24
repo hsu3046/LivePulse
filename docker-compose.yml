@@ -1,0 +1,15 @@
+services:
+  livepulse:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      LIVEPULSE_DB: /app/data/livepulse.db
+      # 휴대전화가 접근할 서버 주소로 바꾸세요.
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:8000}
+    volumes:
+      - livepulse-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  livepulse-data:

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "livepulse-mvp"
+version = "0.1.0"
+description = "오프라인 행사용 실시간 질문·응답·결과 시각화 MVP"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi==0.128.2",
+  "uvicorn[standard]==0.48.0",
+  "qrcode[pil]==8.2",
+  "psycopg[binary]==3.3.4",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-ra"

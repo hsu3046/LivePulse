@@ -1,0 +1,36 @@
+LivePulse 전체 패키지 사용 안내
+================================
+
+1. 설계 문서 보기
+   - 01_설계/LivePulse_기획설계서.pdf
+   - 수정하려면 01_설계/LivePulse_기획설계서.docx
+
+2. 구현 소스 확인
+   - 02_구현/livepulse_mvp/ 폴더
+   - 소스만 다시 압축해서 전달하려면 02_구현/livepulse_mvp.zip
+
+3. 가장 간단한 실행 방법
+   터미널 또는 PowerShell에서 02_구현/livepulse_mvp 폴더로 이동한 뒤 실행합니다.
+
+   python -m venv .venv
+
+   Windows PowerShell:
+   .venv\Scripts\activate
+
+   macOS / Linux:
+   source .venv/bin/activate
+
+   공통:
+   pip install -r requirements.txt
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+4. 브라우저에서 열기
+   진행자 화면: http://localhost:8000/host
+   API 문서:    http://localhost:8000/docs
+
+5. 데모 행사 만들기
+   python scripts/seed_demo.py
+
+6. 휴대전화 QR 테스트
+   같은 와이파이에서 컴퓨터의 LAN IP를 PUBLIC_BASE_URL로 지정해야 합니다.
+   자세한 내용은 02_구현/livepulse_mvp/README.md를 확인하세요.

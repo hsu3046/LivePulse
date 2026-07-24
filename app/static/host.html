@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LivePulse · 행사 목록</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/host"><span class="brand-mark">L</span><span>LivePulse</span></a>
+    <div class="topbar-actions">
+      <a class="btn btn-ghost btn-small" href="/docs" target="_blank">API 문서</a>
+      <button class="btn btn-primary" id="new-event-button">+ 새 행사</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-heading">
+      <div>
+        <h1>내 행사</h1>
+        <p>질문을 준비하고, QR 참가를 열고, 결과를 실시간으로 공유하세요.</p>
+      </div>
+      <button class="btn btn-primary btn-large" id="new-event-button-main">+ 새 행사 만들기</button>
+    </div>
+
+    <div id="event-list" class="event-grid" aria-live="polite"></div>
+  </main>
+
+  <div id="create-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="create-title">
+    <form class="modal" id="create-event-form">
+      <h2 id="create-title">새 행사 만들기</h2>
+      <p>행사 생성 후 질문을 등록하고 참가용 QR코드를 열 수 있습니다.</p>
+      <div class="field">
+        <label for="event-title">행사명 *</label>
+        <input class="input" id="event-title" name="title" minlength="2" maxlength="80" required placeholder="예: 2026 신제품 세미나">
+      </div>
+      <div class="field">
+        <label for="event-description">행사 설명</label>
+        <textarea class="textarea" id="event-description" name="description" maxlength="300" placeholder="참가자에게 보여줄 간단한 설명"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="cancel-create">취소</button>
+        <button type="submit" class="btn btn-primary" id="submit-create">행사 만들기</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/static/app.js"></script>
+  <script src="/static/host.js"></script>
+</body>
+</html>
